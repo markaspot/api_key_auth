@@ -1,0 +1,14 @@
+
+{
+  "name": "markaspot/api_key_auth",
+  "description": "API Key Authentication Provider for Drupal 8 Rest Resources",
+  "type": "drupal-module",
+  "homepage": "https://github.com/markaspot/api_key_auth",
+  "authors": [
+    {
+      "name": "Holger Kreis (markaspot)",
+      "homepage": "https://www.drupal.org/u/markaspot",
+      "role": "Maintainer"
+    }
+  ]
+}
