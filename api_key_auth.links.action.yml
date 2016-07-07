@@ -3,4 +3,3 @@ entity.api_key.add_form:
   title: 'Add Api key'
   appears_on:
     - entity.api_key.collection
-

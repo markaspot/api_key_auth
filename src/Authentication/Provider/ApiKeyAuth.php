@@ -10,7 +10,6 @@ namespace Drupal\api_key_auth\Authentication\Provider;
 use Drupal\Core\Authentication\AuthenticationProviderInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Flood\FloodInterface;
 use Drupal\user\UserAuthInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
@@ -20,7 +19,8 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * HTTP Basic authentication provider.
  */
-class ApiKeyAuth implements AuthenticationProviderInterface {
+class ApiKeyAuth implements AuthenticationProviderInterface
+{
   /**
    * The config factory.
    *
@@ -64,7 +64,8 @@ class ApiKeyAuth implements AuthenticationProviderInterface {
     // Only apply this validation if request has a valid accept value.
 
     $form_api_key = $request->get('api_key');
-    $api_key = isset($form_api_key) ? $request->query->get('api_key') : NULL ;
+    $api_key = isset($form_api_key) ? $form_api_key : $request->query->get('api_key') ;
+
 
     return isset($api_key);
 
@@ -73,7 +74,8 @@ class ApiKeyAuth implements AuthenticationProviderInterface {
   /**
    * {@inheritdoc}
    */
-  public function authenticate(Request $request) {
+  public function authenticate(Request $request)
+  {
     // Load config entity
     $api_key_entities = \Drupal::entityTypeManager()
       ->getStorage('api_key')
@@ -90,6 +92,7 @@ class ApiKeyAuth implements AuthenticationProviderInterface {
         break;
       }
     }
+
     return [];
   }
 
@@ -113,15 +116,14 @@ class ApiKeyAuth implements AuthenticationProviderInterface {
     return FALSE;
   }
 
-
   /**
    * @param $request
    * @return bool
    */
-  public function getKey(Request $request) {
-
+  public function getKey(Request $request)
+  {
     $form_api_key = $request->get('api_key');
-    $api_key = isset($form_api_key) ? $request->query->get('api_key') : NULL ;
+    $api_key = isset($form_api_key) ? $form_api_key : $request->query->get('api_key');
 
     return isset($api_key) ? $api_key : FALSE;
   }
