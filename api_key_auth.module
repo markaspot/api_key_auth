@@ -21,6 +21,8 @@ function api_key_auth_help($route_name, RouteMatchInterface $route_match) {
       provider to authenticate users via a GET or POST Parameter (api_key=1234)') . '</p>';
 
       return $output;
+
     break;
+
   }
 }

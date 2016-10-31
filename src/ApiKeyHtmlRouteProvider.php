@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\api_key_auth\ApiKeyHtmlRouteProvider.
- */
-
 namespace Drupal\api_key_auth;
 
 use Drupal\Core\Entity\EntityTypeInterface;
@@ -18,6 +13,7 @@ use Symfony\Component\Routing\Route;
  * @see Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider
  */
 class ApiKeyHtmlRouteProvider extends AdminHtmlRouteProvider {
+
   /**
    * {@inheritdoc}
    */
