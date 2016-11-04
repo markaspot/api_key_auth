@@ -26,7 +26,7 @@ class ApiKeyDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('entity.api_key.collection');
+    return new Url('entity.api_key_auth.collection');
   }
 
   /**

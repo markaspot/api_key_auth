@@ -23,25 +23,20 @@ use Drupal\api_key_auth\ApiKeyInterface;
  *       "add" = "Drupal\api_key_auth\Form\ApiKeyForm",
  *       "edit" = "Drupal\api_key_auth\Form\ApiKeyForm",
  *       "delete" = "Drupal\api_key_auth\Form\ApiKeyDeleteForm"
- *     },
- *     "route_provider" = {
- *       "html" = "Drupal\api_key_auth\ApiKeyHtmlRouteProvider",
- *     },
+ *     }
  *   },
  *   config_prefix = "api_key",
  *   admin_permission = "administer site configuration",
  *   entity_keys = {
  *     "id" = "id",
- *     "label" = "label",
- *     "uuid" = "uuid",
- *     "key" = "key"
+ *     "label" = "label"
  *   },
  *   links = {
- *     "canonical" = "/admin/config/services/api_key/{api_key}",
- *     "add-form" = "/admin/config/services/api_key/add",
- *     "edit-form" = "/admin/config/services/api_key/{api_key}/edit",
- *     "delete-form" = "/admin/config/services/api_key/{api_key}/delete",
- *     "collection" = "/admin/config/services/api_key"
+ *     "canonical" = "/admin/config/services/api_key_auth/{api_key}",
+ *     "add-form" = "/admin/config/services/api_key_auth/add",
+ *     "edit-form" = "/admin/config/services/api_key_auth/{api_key}",
+ *     "delete-form" = "/admin/config/services/api_key_auth/{id}/delete",
+ *     "collection" = "/admin/config/services/api_key_auth"
  *   }
  * )
  */

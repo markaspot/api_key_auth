@@ -1,0 +1,31 @@
+entity.api_key.collection:
+  path: '/admin/config/services/api_key_auth'
+  defaults:
+    _entity_list: 'api_key'
+    _title: 'Example Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.api_key.add_form:
+  path: '/admin/config/services/api_key_auth/add'
+  defaults:
+    _entity_form: 'api_key.add'
+    _title: 'Add an API Key'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.api_key.edit_form:
+  path: '/admin/config/services/api_key_auth/{api_key}'
+  defaults:
+    _entity_form: 'api_key.edit'
+    _title: 'Edit API Key'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.api_key.delete_form:
+  path: '/admin/config/services/api_key_auth/{api_key}/delete'
+  defaults:
+    _entity_form: 'api_key.delete'
+    _title: 'Delete API Key'
+  requirements:
+    _permission: 'administer site configuration'
