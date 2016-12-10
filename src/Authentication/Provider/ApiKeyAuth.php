@@ -10,7 +10,6 @@ namespace Drupal\api_key_auth\Authentication\Provider;
 use Drupal\Core\Authentication\AuthenticationProviderInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\user\UserAuthInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -62,10 +61,8 @@ class ApiKeyAuth implements AuthenticationProviderInterface
   public function applies(Request $request)
   {
     // Only apply this validation if request has a valid accept value.
-
     $form_api_key = $request->get('api_key');
     $api_key = isset($form_api_key) ? $form_api_key : $request->query->get('api_key') ;
-
 
     return isset($api_key);
 
