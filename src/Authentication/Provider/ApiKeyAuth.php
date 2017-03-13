@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\api_key_auth\Authentication\Provider\ApiKeyAuth.
- */
-
 namespace Drupal\api_key_auth\Authentication\Provider;
 
 use Drupal\Core\Authentication\AuthenticationProviderInterface;
@@ -18,8 +13,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * HTTP Basic authentication provider.
  */
-class ApiKeyAuth implements AuthenticationProviderInterface
-{
+class ApiKeyAuth implements AuthenticationProviderInterface {
   /**
    * The config factory.
    *
@@ -49,8 +43,7 @@ class ApiKeyAuth implements AuthenticationProviderInterface
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity manager service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager)
-  {
+  public function __construct(ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager) {
     $this->configFactory = $config_factory;
     $this->entityTypeManager = $entity_type_manager;
   }
@@ -58,11 +51,10 @@ class ApiKeyAuth implements AuthenticationProviderInterface
   /**
    * {@inheritdoc}
    */
-  public function applies(Request $request)
-  {
+  public function applies(Request $request) {
     // Only apply this validation if request has a valid accept value.
     $form_api_key = $request->get('api_key');
-    $api_key = isset($form_api_key) ? $form_api_key : $request->query->get('api_key') ;
+    $api_key = isset($form_api_key) ? $form_api_key : $request->query->get('api_key');
 
     return isset($api_key);
 
@@ -71,9 +63,8 @@ class ApiKeyAuth implements AuthenticationProviderInterface
   /**
    * {@inheritdoc}
    */
-  public function authenticate(Request $request)
-  {
-    // Load config entity
+  public function authenticate(Request $request) {
+    // Load config entity.
     $api_key_entities = \Drupal::entityTypeManager()
       ->getStorage('api_key')
       ->loadMultiple();
@@ -101,8 +92,7 @@ class ApiKeyAuth implements AuthenticationProviderInterface
   /**
    * {@inheritdoc}
    */
-  public function handleException(GetResponseForExceptionEvent $event)
-  {
+  public function handleException(GetResponseForExceptionEvent $event) {
     $exception = $event->getException();
     if ($exception instanceof AccessDeniedHttpException) {
       $event->setException(new UnauthorizedHttpException('Invalid consumer origin.', $exception));
@@ -117,11 +107,11 @@ class ApiKeyAuth implements AuthenticationProviderInterface
    * @param $request
    * @return bool
    */
-  public function getKey(Request $request)
-  {
+  public function getKey(Request $request) {
     $form_api_key = $request->get('api_key');
     $api_key = isset($form_api_key) ? $form_api_key : $request->query->get('api_key');
 
     return isset($api_key) ? $api_key : FALSE;
   }
+
 }

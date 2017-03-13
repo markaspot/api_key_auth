@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\api_key_auth\Form\ApiKeyForm.
- */
-
 namespace Drupal\api_key_auth\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -17,6 +12,7 @@ use Drupal\Component\Utility\Crypt;
  * @package Drupal\api_key_auth\Form
  */
 class ApiKeyForm extends EntityForm {
+
   /**
    * {@inheritdoc}
    */
@@ -47,9 +43,9 @@ class ApiKeyForm extends EntityForm {
     $form['user_uuid'] = array(
       '#type' => 'select',
       '#multiple' => FALSE,
-      '#options' => self::get_user(),
-      '#description' => $this->t("Please select the User who gets authenticated with that API Key."),
-      '#default_value' => $api_key->user_uuid
+      '#options' => self::getUser(),
+      '#description' => $this->t("Please select the user who gets authenticated with that API Key."),
+      '#default_value' => $api_key->user_uuid,
     );
 
     $form['id'] = array(
@@ -89,19 +85,21 @@ class ApiKeyForm extends EntityForm {
   }
 
   /**
-   * helper function to get taxonomy term options for select widget
+   * Helper function to get taxonomy term options for select widget.
+   *
    * @parameter String $machine_name
-   *  taxonomy machine name
+   *   taxonomy machine name
+   *
    * @return array
-   *  Select options for form
+   *   Select options for form
    */
-  function get_user() {
+  public function getUser() {
     $options = array();
 
     // $vid = taxonomy_vocabulary_machine_name_load($machine_name)->vid;
     $options_source = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple();
 
-    foreach($options_source as $item ) {
+    foreach ($options_source as $item) {
       $key = $item->uuid->value;
       $value = $item->name->value;
       $options[$key] = $value;

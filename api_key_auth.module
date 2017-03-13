@@ -23,6 +23,5 @@ function api_key_auth_help($route_name, RouteMatchInterface $route_match) {
       return $output;
 
     break;
-
   }
 }

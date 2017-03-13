@@ -1,5 +1,3 @@
-# Schema for the configuration files of the Api Key Auth module.
-
 api_key_auth.api_key.*:
   type: config_entity
   label: 'API Key configuration'
